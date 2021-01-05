@@ -9,8 +9,10 @@ class CountdownTimer {
     this.currentDate;
   }
   insertName() {
-    const name = document.querySelector('#insert-name');
+    const titleTimer = document.querySelector(this.selector);
+    const name = document.createElement('p');
     name.textContent = `До Дня Рождения ${this.name} осталось:`;
+    titleTimer.before(name);
     this.getIdDate();
   }
   getIdDate() {
@@ -25,10 +27,17 @@ class CountdownTimer {
     }, 1000);
   }
   timing() {
-    const daysText = document.querySelector('[data-value="days"]');
-    const hoursText = document.querySelector('[data-value="hours"]');
-    const minsText = document.querySelector('[data-value="mins"]');
-    const secsText = document.querySelector('[data-value="secs"]');
+    const daysText = document.querySelector(
+      `${this.selector} [data-value="days"]`);
+    const hoursText = document.querySelector(
+      `${this.selector} [data-value="hours"]`,
+    );
+    const minsText = document.querySelector(
+      `${this.selector} [data-value="mins"]`,
+    );
+    const secsText = document.querySelector(
+      `${this.selector} [data-value="secs"]`,
+    );
 
     const days = Math.floor(this.deltaTime / (1000 * 60 * 60 * 24));
     daysText.textContent = `${days}`;
@@ -57,10 +66,10 @@ const hbIvetta = new CountdownTimer({
   targetDate: new Date('Aug 09, 2021'),
   name: 'Ivetta'
 });
-//hbIvetta.insertName();
+hbIvetta.insertName();
 
 const hbEd = new CountdownTimer({
-  selector: '#timer-1',
+  selector: '#timer-2',
   targetDate: new Date('May 24, 2021'),
   name: 'Ed'
 })
