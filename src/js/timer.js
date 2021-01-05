@@ -10,9 +10,9 @@ class CountdownTimer {
   }
   insertName() {
     const titleTimer = document.querySelector(this.selector);
-    const name = document.createElement('p');
-    name.textContent = `До Дня Рождения ${this.name} осталось:`;
-    titleTimer.before(name);
+    const text = document.createElement('p');
+    text.textContent = `До Дня Рождения ${this.name} осталось:`;
+    titleTimer.before(text);
     this.getIdDate();
   }
   getIdDate() {
@@ -74,3 +74,10 @@ const hbEd = new CountdownTimer({
   name: 'Ed'
 })
 hbEd.insertName()
+
+const hbBo = new CountdownTimer({
+  selector: '#timer-3',
+  targetDate: new Date('Feb 21, 2021'),
+  name: 'Bo'
+})
+hbBo.insertName()
